@@ -1,0 +1,59 @@
+//Задача 1
+/Реализовать генератор, бесконечно возвращающий случайное число в заданном диапазоне random(n, m).
+
+function * randomNum(n, m) {
+    while(true){
+        yield Math.random() * (m - n) + n;
+    }
+}
+const func = randomNum(1, 6);
+console.log(func.next());
+console.log(func.next());
+
+/Реализовать генератор, бесконечно возвращающий очередное число из последовательности Падована.
+
+function * padowan(){
+    result = [1, 1, 1];
+    let i = 3;
+    while(true){
+        result.push(result[i - 2] + result[i - 3])
+        yield result[i];
+        i++;
+    }
+}
+const pad = padowan();
+for(let i = 0; i < 51; i++) console.log(pad.next());
+
+/Реализовать генератор, бесконечно возвращающий очередное простое число.
+
+function * prime(n){
+next:  
+for (let i = 2; i <= n; i++) { 
+    for (let j = 2; j < i; j++) { 
+        if (i % j == 0) continue next; 
+        }
+        yield i;
+    }
+}
+const pad = prime(10);
+console.log(pad.next());
+console.log(pad.next());
+console.log(pad.next());
+
+//Задача 2
+
+/Посчитать число вхождений букв (или слов) в строке, используя Map.
+
+function mapEntries(str){
+    let map = new Map();
+    for(let i = 0; i < str.length; i++){
+        if(map.has(str[i])){
+            let value = map.get(str[i]);
+            map.delete(str[i]);
+            map.set(str[i], value + 1);
+        }
+        else map.set(str[i], 1);
+    }
+    return map
+}
+console.log(mapEntries('51512152512wdawd19b1d7197dg2179d812gd'));

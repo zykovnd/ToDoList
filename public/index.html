@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/ico">
+    <title>Список задач</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Список задач</h1>
+        <div id="task-container">
+            <!-- Задачи -->
+        </div>
+        <div id="input-container">
+            <input type="text" id="new-task" placeholder="Введите новую задачу">
+            <button onclick="addTask()">Добавить</button>
+            <button onclick="deleteAllTasks()">Очистить все</button>
+        </div>
+    </div>
+    <footer>
+        <hr class="line"/>
+        <p align=center>
+            Copyright ©
+        </p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>

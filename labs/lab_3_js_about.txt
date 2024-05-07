@@ -1,0 +1,45 @@
+//Задание 1. Работа с переменными
+
+let admin;
+let name = "Джон";
+admin = name;
+alert(admin);
+
+//Задание 2. Исправьте сложение
+
+let a = parseInt(prompt("Первое число?", 1));
+let b = parseInt(prompt("Второе число?", 2));
+
+alert(a + b); // 12
+
+//Задание 3. Выведите чётные числа
+
+for (let index = 0; index <= 10; index++) {
+    if(index % 2 == 0) console.log(index);
+}
+
+//Задание 4. Замените for на while
+
+let i = 0;
+while(i < 3){
+    alert( `number ${i}!` );
+    i++
+}
+
+//Задание 5. Повторять цикл, пока ввод неверен
+
+let num = parseInt(prompt("Введите число больше 100"));
+while(num <= 100){
+    num = parseInt(prompt("Введите число больше 100"));
+}
+
+//Задание 6. Простые числа
+
+let n = parseInt(prompt("Введите число"));
+next:  
+for (let i = 2; i <= n; i++) { 
+    for (let j = 2; j < i; j++) { 
+        if (i % j == 0) continue next; 
+        }
+        console.log( i ); 
+    }

@@ -1,0 +1,71 @@
+//Задача 1
+
+/Найти максимальную разницу между элементами массива.
+
+let arr = [1,7,72,8,2,8,73,47,34,734,34,373,737,37,3,3];
+function maxDif(arr){
+    arr.sort(function compare(a, b) {
+  if (a > b) return 1;
+  if (a == b) return 0;
+  if (a < b) return -1;
+});
+    console.log(arr)
+    let count = 0;
+    for(let i = 1; i < arr.length; i++){
+        if(arr[i] - arr[i - 1] > count) count =  arr[i] - arr[i - 1];
+    }
+    return count
+}
+console.log(maxDif(arr));
+
+/Вернуть массив без повторяющихся элементов.
+
+function getUnique(arr){
+    let set = new Set(arr);
+    return Array.from(set);
+}
+console.log(getUnique([6,1,7,8,2,1,6,5,2,1,4,6,2,1,11,]));
+
+/Дан массив объектов, вернуть только те, у которых isDone: true.
+
+function isDone(arr){
+    let result = [];
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i].idDone == true) result.push(arr[i]);
+    }
+    return result
+}
+console.log(isDone([
+    {id: 1, idDone: true}, 
+    {id: 2, idDone: false},
+    {id: 3, idDone: true}
+]));
+
+//Задача 2
+
+/Найти элементы массива, которые больше указанного числа:
+
+function moreThanNum(arr, num){
+    let result = [];
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] > num) result.push(arr[i]);
+    }
+    return result
+}
+console.log(moreThanNum([1, 4, 6, 3, 2], 2));
+
+/Дан многомерный массив произвольной вложенности. Написать функцию, делающую из него "плоский" массив:
+
+function flatten(arr) {
+  const result = [...arr];
+  let i = 0;
+  while (i < result.length) {
+    if (result[i] instanceof Array) {
+      result.splice(i, 1, ...result[i]);
+    } else {
+      i++;
+    }
+  }
+  return result;
+}
+console.log(flatten([1, 4, [34, 1, 20], [6, [6, 12, 8], 6]]));

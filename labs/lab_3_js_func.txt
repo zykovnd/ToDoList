@@ -1,0 +1,93 @@
+//Задача 1
+
+/Вернуть число в обратном порядке 123 -> 321.
+
+function reverseNum(num){
+    return parseInt(num.toString().split('').reverse().join(''));
+}
+console.log(reverseNum(123));
+
+/Вернуть число без повторяющихся цифр 111333456 -> 13456.
+
+function noRepeat(num){
+    num = num.toString();
+    result = "";
+    for(let i = 0; i < num.length; i++){
+        if(result.includes(num[i])) continue;
+        else result += num[i];
+    }
+    return parseInt(result);
+}
+console.log(noRepeat(111333456));
+
+/Посчитать, сколько раз в данном числе встречается данная цифра (1355567, 5) -> 3.
+
+function countEntries(num, numToFind){
+    let count = 0;
+    num = num.toString();
+    numToFind = numToFind.toString();
+    for(let i = 0; i < num.length; i++){
+        if(num[i] == numToFind) count++;
+    }
+    return count;
+}
+console.log(countEntries(1355567, 5));
+
+/Посчитать самую длинную последовательность нулей/единиц в двоичной записи данного числа.
+
+function longestSubsequence(num){
+    num = num.toString(2);
+    let count = 1;
+    let result = 1;
+    for(let i = 1; i < num.length; i++){
+        if(num[i] == num[i - 1]) count++;
+        else {
+            if(count > result) result = count;
+            count = 1;
+        }
+    }
+    return result;
+}
+console.log(longestSubsequence(56216126));
+
+//Задача 2
+
+/Найти самый первый неповторяющийся символ в строке: 'фывфавыапрс' -> 'п'.
+
+function firstUnique(str){
+    result = [];
+    
+    for(let i = 0; i < str.length; i++){
+        if(result.includes(str[i])) {
+            let index = result.indexOf(str[i]);
+            result.splice(index, 1);
+        }
+        else result.push(str[i]);
+    }
+    return result[0];
+}
+console.log(firstUnique('фывфавыапрс'));
+
+/Cгенерировать строку заданной длины из случайных символов, взятых из набора английскийх букв и цифр: (5) -> '2fvg6'.
+
+function getRandomString(num){
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for(let i = 0; i < num; i++){
+        result += alphabet[Math.floor(Math.random() *  (alphabet.length - 1))];
+    }
+    return result
+}
+console.log(getRandomString(5));
+
+/Вернуть только уникальные символы строки: 'позволяеткопироватьтекстиз' -> 'позвляеткираьс'
+
+function noStringRepeat(str){
+    result = "";
+    for(let i = 0; i < str.length; i++){
+        if(result.includes(str[i])) continue;
+        else result += str[i];
+    }
+    return result;
+}
+console.log(noStringRepeat('позволяеткопироватьтекстиз'));
