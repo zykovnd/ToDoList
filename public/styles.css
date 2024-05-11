@@ -12,10 +12,13 @@ footer {
     position: absolute;
     bottom: 0px;
     align-items: center;
+    text-align: center;
 }
+
 .line {
     width: 99vw;
 }
+
 #app {
     background-color: #fff;
     border-radius: 10px;
@@ -29,20 +32,27 @@ h1 {
     color: #333;
 }
 
+.text {
+    word-wrap: break-word;
+    padding: 5px;
+    width: 450px;
+    height: auto;
+    text-align: justify;
+}
+
 #task-container {
+    border: 1px solid #ccc;
     margin-top: 20px;
+    padding: 5px;
 }
 
 .task {
+    align-self: center;
     padding: 15px;
     margin-bottom: 5px;
     cursor: pointer;
 	text-align: center;
 	border: 2px solid black;
-}
-
-.button {
-    margin-left: 30px;
 }
 
 .task:nth-child(odd) {
@@ -57,6 +67,7 @@ input {
     padding: 8px;
     margin-right: 10px;
     border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
 button {
@@ -65,6 +76,8 @@ button {
     color: #fff;
     border: none;
     cursor: pointer;
+    margin-right: 10;
+    border-radius: 10px;
 }
 
 button:hover {
