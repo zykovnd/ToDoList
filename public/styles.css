@@ -24,7 +24,7 @@ footer {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 500px;
+    width: 510px;
     text-align: center;
 }
 
@@ -44,6 +44,8 @@ h1 {
     border: 1px solid #ccc;
     margin-top: 20px;
     padding: 5px;
+    max-height: 60%;
+    overflow: auto;
 }
 
 .task {
