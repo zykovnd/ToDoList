@@ -12,6 +12,8 @@ import { SecondsLiving } from "./SecondsLiving";
 import { NumberFilter } from "./NumberFilter";
 import { RegistrationForm } from "./RegistrationForm";
 import { ProfileEditForm } from "./ProfileEditForm";
+import { FetchForm } from "./FetchForm";
+import { LoginForm } from "./LoginForm";
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
       <Route path="/seconds-living" element={<SecondsLiving />}></Route>
       <Route path="/number-filter" element={<NumberFilter />}></Route>
       <Route path="/registration" element={<RegistrationForm />}></Route>
+      <Route path="/login" element={<LoginForm />}></Route>
       <Route path="/profile-edit" element={<ProfileEditForm />}></Route>
+      <Route path="/fetch-form" element={<FetchForm />}></Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export function RegistrationForm() {
+export function LoginForm() {
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
 
   function usernameChangeHandler(event) {
@@ -12,9 +11,6 @@ export function RegistrationForm() {
   }
   function passwordChangeHandler(event) {
     setPassword(event.target.value);
-  }
-  function passwordConfirmationChangeHandler(event) {
-    setPasswordConfirmation(event.target.value);
   }
 
   function isValid() {
@@ -39,14 +35,6 @@ export function RegistrationForm() {
       setError("Пароль обязателен");
       return false;
     }
-    if (!passwordConfirmation.trim()) {
-      setError("Повтор пароля обязателен");
-      return false;
-    }
-    if (passwordConfirmation.trim() !== password.trim()) {
-      setError("Пароли не совпадают");
-      return false;
-    }
     return true;
   }
 
@@ -54,13 +42,12 @@ export function RegistrationForm() {
     e.preventDefault();
     if (isValid()) {
       try {
-        const response = await axios.post("http://localhost:3001/user", {
+        const response = await axios.post("http://localhost:3001/auth", {
           nickname,
           password,
         });
-        console.log(response.data);
         if (response) {
-          window.location.replace("/login");
+          window.location.replace("/");
         }
       } catch (error) {
         console.error(error);
@@ -84,15 +71,8 @@ export function RegistrationForm() {
         onChange={passwordChangeHandler}
         placeholder="Введите пароль"
       />
-      <input
-        type="password"
-        id="password-confirmation"
-        value={passwordConfirmation}
-        onChange={passwordConfirmationChangeHandler}
-        placeholder="Повторите пароль"
-      />
       <button type="submit" onClick={submitHandler}>
-        Зарегистрироваться
+        Войти
       </button>
       {error !== "" && <span style={{ color: "red" }}>{error}</span>}
     </div>
