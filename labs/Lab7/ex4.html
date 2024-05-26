@@ -13,7 +13,7 @@
       function GetButton() {
         const [value, setValue] = useState("red");
 
-        function buttonClickHandler() {
+        const buttonClickHandler = () => {
           let newColor;
           if (value == "red") newColor = "green";
           else newColor = "red";
