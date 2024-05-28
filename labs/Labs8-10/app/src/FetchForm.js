@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-export function FetchForm() {
-  const [postID, setPostID] = useState(0);
+export default function FetchForm() {
+  const [postID, setPostID] = useState();
   const [errors, setError] = useState("");
   const [resultForm, setResultForm] = useState();
 
@@ -19,6 +19,7 @@ export function FetchForm() {
 
   async function submitFormHandler(e) {
     e.preventDefault();
+    setError("");
     if (isValid()) {
       try {
         const postResponse = await fetch(
@@ -45,7 +46,7 @@ export function FetchForm() {
         }
       } catch (e) {
         if (e instanceof Error) {
-          setError(e.message);
+          setError('Ресурса не существует');
         }
       }
     }
@@ -72,6 +73,7 @@ export function FetchForm() {
             <p>body: {resultForm.body}</p>
             <p>name: {resultForm.name}</p>
             <p>email: {resultForm.email}</p>
+            <p>{resultForm.email}</p>
           </div>
         )}
       </label>
