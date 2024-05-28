@@ -1,0 +1,102 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.line {
+  width: 100%;
+}
+
+#app {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 510px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+.text {
+  word-wrap: break-word;
+  padding: 5px;
+  width: 450px;
+  height: auto;
+  text-align: justify;
+}
+
+#task-container {
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 5px;
+  max-height: 350px;
+  overflow: auto;
+}
+
+.task-counter {
+  padding-right: 20px;
+}
+
+#counters-container {
+  display: flex;
+  margin-left: 135px;
+}
+
+.task {
+  align-self: center;
+  padding: 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.task:nth-child(odd) {
+  background-color: #e0e0e0;
+}
+
+#input-container {
+  margin-top: 20px;
+  align-self: center;
+}
+
+input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+button {
+  padding: 8px 15px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
