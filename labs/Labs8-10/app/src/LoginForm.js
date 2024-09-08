@@ -60,6 +60,7 @@ export function LoginForm() {
           window.location.replace("/");
         }
       } catch (error) {
+        setLoading(false);
         console.error(error);
       }
     }

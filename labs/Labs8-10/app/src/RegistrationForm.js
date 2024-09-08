@@ -80,6 +80,7 @@ export function RegistrationForm() {
           window.location.replace("/login");
         }
       } catch (error) {
+        setLoading(false);
         console.error("Ошибка сети:", error);
       }
     }
