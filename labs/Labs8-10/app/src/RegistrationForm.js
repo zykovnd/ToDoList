@@ -1,11 +1,18 @@
 import React, { useState } from "react";
-import axios from "axios";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export function RegistrationForm() {
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
   function usernameChangeHandler(event) {
     setNickname(event.target.value);
@@ -53,17 +60,27 @@ export function RegistrationForm() {
   async function submitHandler(e) {
     e.preventDefault();
     if (isValid()) {
+      setLoading(true);
       try {
-        const response = await axios.post("http://localhost:3001/user", {
-          nickname,
-          password,
+        const response = await fetch("http://localhost:3001/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nickname,
+            password,
+          }),
         });
-        console.log(response.data);
-        if (response) {
+        setLoading(false);
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error("Ошибка:", errorData);
+        } else {
           window.location.replace("/login");
         }
       } catch (error) {
-        console.error(error);
+        console.error("Ошибка сети:", error);
       }
     }
   }
@@ -95,6 +112,13 @@ export function RegistrationForm() {
         Зарегистрироваться
       </button>
       {error !== "" && <span style={{ color: "red" }}>{error}</span>}
+      <ClipLoader
+        loading={loading}
+        cssOverride={override}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
     </div>
   );
 }

@@ -31,7 +31,6 @@ function App() {
       <Route path="/registration" element={<RegistrationForm />}></Route>
       <Route path="/login" element={<LoginForm />}></Route>
       <Route path="/profile-edit" element={<ProfileEditForm />}></Route>
-      <Route path="/fetch-form" element={<FetchForm />}></Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

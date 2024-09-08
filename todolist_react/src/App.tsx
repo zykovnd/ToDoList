@@ -48,6 +48,7 @@ function App() {
     setCompletedTasks(tasks.filter((task) => task.completed === true).length);
     setUncompletedTasks(tasks.filter((task) => task.completed !== true).length);
   }, [tasks]);
+
   return (
     <div>
       <div id="app">

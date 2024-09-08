@@ -1,10 +1,18 @@
 import React, { useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import axios from "axios";
 
 export function LoginForm() {
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  let [loading, setLoading] = useState(false);
+
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
   function usernameChangeHandler(event) {
     setNickname(event.target.value);
@@ -41,11 +49,13 @@ export function LoginForm() {
   async function submitHandler(e) {
     e.preventDefault();
     if (isValid()) {
+      setLoading(true);
       try {
-        const response = await axios.post("http://localhost:3001/auth", {
+        const response = await fetch("http://localhost:3001/auth", {
           nickname,
           password,
         });
+        setLoading(false);
         if (response) {
           window.location.replace("/");
         }
@@ -75,6 +85,13 @@ export function LoginForm() {
         Войти
       </button>
       {error !== "" && <span style={{ color: "red" }}>{error}</span>}
+      <ClipLoader
+        loading={loading}
+        cssOverride={override}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
     </div>
   );
 }
