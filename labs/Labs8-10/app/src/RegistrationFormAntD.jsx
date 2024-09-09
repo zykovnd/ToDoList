@@ -1,35 +1,41 @@
 import React from "react";
 import { Button, Form, Input } from "antd";
 
-const onFinish = async (values) => {
-  try {
-    const response = await fetch("http://localhost:3001/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // fields
-      }),
-    });
-    //setLoading(false);
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Ошибка:", errorData);
-    } else {
-      window.location.replace("/login");
-    }
-  } catch (error) {
-    //setLoading(false);
-    console.error("Ошибка сети:", error);
-  }
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
 
-export const RegistrationFormAntD = () => (
-  <Form
+
+export const RegistrationFormAntD = () => {
+  const [form] = Form.useForm();
+  
+  //console.log(form.);
+
+  const onFinish = async (values) => {
+    try {
+      const response = await fetch("http://localhost:3001/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // fields
+        }),
+      });
+      //setLoading(false);
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Ошибка:", errorData);
+      } else {
+        window.location.replace("/login");
+      }
+    } catch (error) {
+      //setLoading(false);
+      console.error("Ошибка сети:", error);
+    }
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
+  return <Form
     name="basic"
     labelCol={{
       span: 8,
@@ -46,7 +52,7 @@ export const RegistrationFormAntD = () => (
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
     autoComplete="off"
-    
+    form={form}
   >
     <Form.Item
       label="Username"
@@ -119,4 +125,4 @@ export const RegistrationFormAntD = () => (
       </Button>
     </Form.Item>
   </Form>
-);
+}
