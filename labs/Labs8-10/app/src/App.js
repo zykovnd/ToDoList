@@ -12,7 +12,7 @@ import { SecondsLiving } from "./SecondsLiving";
 import { NumberFilter } from "./NumberFilter";
 import { RegistrationForm } from "./RegistrationForm";
 import { ProfileEditForm } from "./ProfileEditForm";
-import { FetchForm } from "./FetchForm";
+import { RegistrationFormAntD } from "./RegistrationFormAntD";
 import { LoginForm } from "./LoginForm";
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
       <Route path="/registration" element={<RegistrationForm />}></Route>
       <Route path="/login" element={<LoginForm />}></Route>
       <Route path="/profile-edit" element={<ProfileEditForm />}></Route>
+      <Route path="/registration-antd" element={<RegistrationFormAntD />}></Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

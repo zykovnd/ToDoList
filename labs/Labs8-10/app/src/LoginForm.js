@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
-import axios from "axios";
 
 export function LoginForm() {
   const [nickname, setNickname] = useState("");
