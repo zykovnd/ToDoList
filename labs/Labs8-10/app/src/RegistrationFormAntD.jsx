@@ -10,16 +10,13 @@ export const RegistrationFormAntD = () => {
 
   const onFinish = async (values) => {
     try {
-      const response = await fetch("http://localhost:3001/user", {
+      const response = await fetch("http://localhost:3001/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          // fields
-        }),
+        body: JSON.stringify(values),
       });
-      //setLoading(false);
       if (!response.ok) {
         const errorData = await response.json();
         console.error("Ошибка:", errorData);
@@ -27,7 +24,6 @@ export const RegistrationFormAntD = () => {
         window.location.replace("/login");
       }
     } catch (error) {
-      //setLoading(false);
       console.error("Ошибка сети:", error);
     }
   };
